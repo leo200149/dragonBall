@@ -1,0 +1,29 @@
+
+.toggle-group {
+}
+
+.toggle-group button {
+  margin:5px;
+  padding: 10px 10px;
+  font-size: 32px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+.toggle-group button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.submitBtn{
+  padding: 10px 10px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+}
