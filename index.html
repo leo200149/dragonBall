@@ -1,60 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Dragon Ball</title>
-    <link rel="stylesheet" href="app.css">
-</head>
-<body>
-    <div>
-  <div style="float:left;width:45%;margin:10px;">
-    <div>
-      <label for="door">門柱:</label>
-      <div class="toggle-group" id="door"></div>
-    </div>
-    <div style="margin:30px 0px;">
-      <button class="submitBtn" onclick="calculate()">計算</button>
-    </div>
-    <div>
-      <label for="ball">球:</label>
-      <div class="toggle-group" id="ball"></div>
-      <div style="margin:30px 0px;">
-        <button class="submitBtn" onclick="nextRound()">下一局</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dragon Door</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <label for="door">門柱:</label>
+        <div class="toggle-group" id="door"></div>
+      </div>
+      <div class="spacing">
+        <button class="submitBtn" onclick="calculate()">計算</button>
+      </div>
+      <div>
+        <label for="ball">球:</label>
+        <div class="toggle-group" id="ball"></div>
+        <div class="spacing">
+          <button class="submitBtn" onclick="nextRound()">下一局</button>
+        </div>
+      </div>
+      <div class="spacing">
+        <label class="result">機率結果</label>
+        <div id="calResult" class="list"></div>
+      </div>
+      <div>
+        <label class="result">當前牌池</label>
+        <ul id="allCards" class="list"></ul>
+      </div>
+      <div>
+        <label class="result">開牌記錄</label>
+        <ul id="history" class="list"></ul>
+      </div>
+      <div>
+        <label for="deck">幾副:</label>
+        <div class="toggle-group" id="deck">
+          <button onclick="toggleButton(this)">1</button>
+          <button onclick="toggleButton(this)">2</button>
+          <button onclick="toggleButton(this)">3</button>
+          <button onclick="toggleButton(this)">4</button>
+          <button onclick="toggleButton(this)">5</button>
+          <button onclick="toggleButton(this)">6</button>
+        </div>
+      </div>
+      <div class="spacing">
+        <button class="submitBtn" onclick="create()">產牌</button>
       </div>
     </div>
-    <div>
-      <label for="deck">幾副:</label>
-      <div class="toggle-group" id="deck">
-        <button onclick="toggleButton(this)">1</button>
-        <button onclick="toggleButton(this)">2</button>
-        <button onclick="toggleButton(this)">3</button>
-        <button onclick="toggleButton(this)">4</button>
-        <button onclick="toggleButton(this)">5</button>
-        <button onclick="toggleButton(this)">6</button>
-      </div>
-    </div>
-    <div style="margin:30px 0px;">
-      <button class="submitBtn" onclick="create()">產牌</button>
-    </div>
-  </div>
-  <div style="float:left;width:45%;margin:10px">
-    <div style="margin:30px 0px;">
-      <label>機率結果</label>
-      <div id="calResult">
-      </div>
-    </div>
-    <div>
-      <label>當前牌池</label>
-      <ul id="allCards">
-      </ul>
-    </div>
-    <div>
-      <label>開牌記錄</label>
-      <ul id="history">
-      </ul>
-    </div>
-  </div>
-</div>
-<script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
