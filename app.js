@@ -31,47 +31,26 @@ const CARD_NUM = {
 
 const CARDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-function toggleButton(button) {
+function toggleButton(button, containerId, maxActive) {
+  // 获取容器
+  let container = document.getElementById(containerId);
+  // 获取当前容器内已激活的按钮
+  var activeButtons = container.querySelectorAll("button.active");
   // 如果当前按钮已经是激活状态，则取消激活
   if (button.classList.contains("active")) {
     button.classList.remove("active");
   } else {
     // 否则，检查当前已激活的按钮数量
-    var activeButtons = document.querySelectorAll("#deck button.active");
-    // 如果已激活的按钮数量超过了 2 个，则不再激活新的按钮
-    activeButtons.forEach((btn) => btn.classList.remove("active"));
-    // 激活当前按钮
-    button.classList.add("active");
-  }
-}
-
-function toggleButton2(button) {
-  // 如果当前按钮已经是激活状态，则取消激活
-  if (button.classList.contains("active")) {
-    button.classList.remove("active");
-  } else {
-    // 否则，检查当前已激活的按钮数量
-    var activeButtons = document.querySelectorAll("#door button.active");
-    // 如果已激活的按钮数量超过了 2 个，则不再激活新的按钮
-    if (activeButtons.length >= 2) {
-      return;
+    if (maxActive == 1){
+      activeButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+    } else {
+      if (activeButtons.length >= maxActive) {
+        return;
+      }
+      // 激活当前按钮
+      button.classList.add("active");
     }
-    // 激活当前按钮
-    button.classList.add("active");
-  }
-}
-
-function toggleButton3(button) {
-  // 如果当前按钮已经是激活状态，则取消激活
-  if (button.classList.contains("active")) {
-    button.classList.remove("active");
-  } else {
-    // 否则，检查当前已激活的按钮数量
-    var activeButtons = document.querySelectorAll("#ball button.active");
-    // 如果已激活的按钮数量超过了 2 个，则不再激活新的按钮
-    activeButtons.forEach((btn) => btn.classList.remove("active"));
-    // 激活当前按钮
-    button.classList.add("active");
   }
 }
 
@@ -80,11 +59,11 @@ let ballGroup = document.getElementById("ball");
 
 CARDS.forEach(
   (n) =>
-    (toggleGroup.innerHTML += `<button onclick="toggleButton2(this)">${CARD_CODE[n]}</button>`)
+    (toggleGroup.innerHTML += `<button onclick="toggleButton(this, 'door', 2)">${CARD_CODE[n]}</button>`)
 );
 CARDS.forEach(
   (n) =>
-    (ballGroup.innerHTML += `<button onclick="toggleButton3(this)">${CARD_CODE[n]}</button>`)
+    (ballGroup.innerHTML += `<button onclick="toggleButton(this, 'ball', 1)">${CARD_CODE[n]}</button>`)
 );
 
 let game = {};
@@ -298,6 +277,7 @@ function updateCalResult() {
 
 function updateHistory() {
   let history = document.getElementById("history");
+  history.innerHTML = '';
   game.history
     .slice()
     .reverse()
